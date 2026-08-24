@@ -4,7 +4,17 @@ const nav = document.querySelector('nav');
 botaoMenu.addEventListener('click', function() {
     nav.classList.toggle('menu-aberto');
     botaoMenu.classList.toggle('menu-aberto');
-    document.body.classList.toggle('menu-aberto');
+    document.body.classList.toggle('menu-aberto');s
+});
+
+const linksMenu = document.querySelectorAll('nav a');
+
+linksMenu.forEach(function(link) {
+    link.addEventListener('click', function() {
+        nav.classList.remove('menu-aberto');
+        botaoMenu.classList.remove('menu-aberto');
+        document.body.classList.remove('menu-aberto');
+    });
 });
 
 window.addEventListener('load', function() {
@@ -40,4 +50,17 @@ window.addEventListener('scroll', function() {
     }
 
     ultimaPosicao = posicaoAtual;
+});
+
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const destino = document.querySelector(this.getAttribute('href'));
+
+        destino.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+    });
 });
