@@ -54,14 +54,20 @@ window.addEventListener('scroll', function() {
 
 document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     link.addEventListener('click', function (e) {
-
         e.preventDefault();
 
         const destino = document.querySelector(this.getAttribute('href'));
 
-        destino.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-        });
+        if (this.getAttribute('href') === '#inicio') {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            destino.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
     });
 });
