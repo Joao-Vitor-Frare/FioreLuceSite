@@ -260,15 +260,20 @@ nav a{
     font-weight: 300;
 }
 
-.carrosel{
+.carrossel{
     margin-top: 200px;
 }
 
-.imagens-carrosel{
+.imagens-carrossel{
     display: flex;
     overflow: hidden;
+
+    width: 1762.5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.trilha-carrossel{
+    display: flex;
     height: 650px;
-    width: 1462.5px;
-
-
 }
