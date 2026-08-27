@@ -261,11 +261,33 @@ nav a{
 }
 
 .carrossel{
+    display: flex;
     margin-top: 200px;
 }
 
+.imagens-carrossel::before,
+.imagens-carrossel::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 150px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.imagens-carrossel::before{
+    left: 0;
+    background: linear-gradient(to right, rgb(12, 12, 12), transparent);
+}
+
+.imagens-carrossel::after{
+    right: 0;
+    background: linear-gradient(to left, rgb(12, 12, 12), transparent);
+}
+
 .imagens-carrossel{
-    display: flex;
+    position: relative;
     overflow: hidden;
 
     width: 1762.5px;
@@ -276,4 +298,30 @@ nav a{
 .trilha-carrossel{
     display: flex;
     height: 650px;
+    width: auto;
+    gap: 20px;
+    
+    transform: translatex(150px);
+}
+
+.seta-esquerda{
+    transform: translatex(100px);
+    z-index: 10;
+
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.seta-direita{
+    transform: translatex(-100px);
+    z-index: 10;
+
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.seta-direita svg {
+    transform: scaleX(-1);
 }

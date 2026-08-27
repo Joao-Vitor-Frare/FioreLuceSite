@@ -71,3 +71,36 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
         }
     });
 });
+
+const trilha = document.querySelector('.trilha-carrossel');
+const setaEsquerda = document.querySelector('.seta-esquerda');
+const setaDireita = document.querySelector('.seta-direita');
+
+const larguraImagem = 487.5;
+const gap = 20;
+const passo = larguraImagem + gap;
+const deslocamentoInicial = 150;
+const totalImagens = 6;
+const imagensVisiveis = 3;
+const maxPosicao = totalImagens - imagensVisiveis;
+
+let posicaoAtual = 0;
+
+function atualizarCarrossel() {
+    const deslocamento = deslocamentoInicial - (posicaoAtual * passo);
+    trilha.style.transform = `translateX(${deslocamento}px)`;
+}
+
+setaDireita.addEventListener('click', function() {
+    if (posicaoAtual < maxPosicao) {
+        posicaoAtual++;
+        atualizarCarrossel();
+    }
+});
+
+setaEsquerda.addEventListener('click', function() {
+    if (posicaoAtual > 0) {
+        posicaoAtual--;
+        atualizarCarrossel();
+    }
+});
