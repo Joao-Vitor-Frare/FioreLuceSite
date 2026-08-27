@@ -76,7 +76,7 @@ const trilha = document.querySelector('.trilha-carrossel');
 const setaEsquerda = document.querySelector('.seta-esquerda');
 const setaDireita = document.querySelector('.seta-direita');
 
-const larguraImagem = 487.5;
+const larguraImagem = 488;
 const gap = 20;
 const passo = larguraImagem + gap;
 const deslocamentoInicial = 130;

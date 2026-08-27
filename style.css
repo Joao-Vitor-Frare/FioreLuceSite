@@ -76,11 +76,11 @@ nav{
     display: flex;
     gap: 30px;
 
-    left: 50%;
+    left: 50.8%;
     transform: translate(-50%);
     
-        font-family: "Satosh", sans-serif;
-        font-weight: 900;
+    font-family: "Satosh", sans-serif;
+    font-weight: 900;
 }
 
 nav a{
@@ -265,6 +265,17 @@ nav a{
     margin-top: 200px;
 }
 
+.imagens-carrossel{
+    position: relative;
+    overflow: hidden;
+
+    width: 100%;
+    max-width: 1762.5px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .imagens-carrossel::before,
 .imagens-carrossel::after{
     content: "";
@@ -279,6 +290,7 @@ nav a{
 .imagens-carrossel::before{
     left: 0;
     background: linear-gradient(to right, rgb(12, 12, 12), transparent);
+    
 }
 
 .imagens-carrossel::after{
@@ -286,22 +298,21 @@ nav a{
     background: linear-gradient(to left, rgb(12, 12, 12), transparent);
 }
 
-.imagens-carrossel{
-    position: relative;
-    overflow: hidden;
-
-    width: 1762.5px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .trilha-carrossel{
     display: flex;
     height: 650px;
     width: auto;
     gap: 20px;
+
+    flex-shrink: 0;
     
     transform: translatex(130px);
+    transition: transform 0.3s ease;
+}
+
+.trilha-carrossel img {
+    width: 488px;
+    height: 650;
 }
 
 .seta-esquerda{
@@ -324,4 +335,20 @@ nav a{
 
 .seta-direita svg {
     transform: scaleX(-1);
+}
+
+.ver-mais{
+    margin-top: 20px;
+    font-size: 35px;
+    color: white;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-family: "Satosh", sans-serif;
+    font-weight: 300;
 }
