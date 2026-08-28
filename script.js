@@ -4,7 +4,7 @@ const nav = document.querySelector('nav');
 botaoMenu.addEventListener('click', function() {
     nav.classList.toggle('menu-aberto');
     botaoMenu.classList.toggle('menu-aberto');
-    document.body.classList.toggle('menu-aberto');s
+    document.body.classList.toggle('menu-aberto');
 });
 
 const linksMenu = document.querySelectorAll('nav a');
@@ -75,20 +75,37 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
 const trilha = document.querySelector('.trilha-carrossel');
 const setaEsquerda = document.querySelector('.seta-esquerda');
 const setaDireita = document.querySelector('.seta-direita');
+const janelaCarrossel = document.querySelector('.imagens-carrossel');
 
-const larguraImagem = 488;
+const larguraImagem = 487.5;
 const gap = 20;
 const passo = larguraImagem + gap;
-const deslocamentoInicial = 130;
+const deslocamentoInicial = 150;
 const totalImagens = 6;
-const imagensVisiveis = 3;
-const maxPosicao = totalImagens - imagensVisiveis;
 
+let imagensVisiveis = 3;
+let maxPosicao = totalImagens - imagensVisiveis;
 let posicaoAtual = 0;
+
+function calcularImagensVisiveis() {
+    const larguraJanela = janelaCarrossel.offsetWidth;
+    return Math.floor(larguraJanela / passo);
+}
 
 function atualizarCarrossel() {
     const deslocamento = deslocamentoInicial - (posicaoAtual * passo);
     trilha.style.transform = `translateX(${deslocamento}px)`;
+}
+
+function recalcularLimites() {
+    imagensVisiveis = calcularImagensVisiveis();
+    maxPosicao = totalImagens - imagensVisiveis;
+
+    if (posicaoAtual > maxPosicao) {
+        posicaoAtual = maxPosicao;
+    }
+
+    atualizarCarrossel();
 }
 
 setaDireita.addEventListener('click', function() {
@@ -103,4 +120,19 @@ setaEsquerda.addEventListener('click', function() {
         posicaoAtual--;
         atualizarCarrossel();
     }
+});
+
+window.addEventListener('load', function() {
+    document.body.classList.add('pronto');
+    recalcularLimites();
+});
+
+window.addEventListener('resize', function() {
+    document.body.classList.add('redimensionando');
+
+    clearTimeout(timeoutRedimensionar);
+    timeoutRedimensionar = setTimeout(function() {
+        document.body.classList.remove('redimensionando');
+        recalcularLimites();
+    }, 300);
 });

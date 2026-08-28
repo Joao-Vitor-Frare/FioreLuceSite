@@ -233,6 +233,8 @@ nav a{
 
 .sobre{
     display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
     padding-left: clamp(40px, calc(40vw - 520px), 250px);
     margin-top: 100px;
 }
@@ -246,7 +248,7 @@ nav a{
 
 .titulo-sobre{
     font-size: 40px;
-    margin-left: 150px;
+    margin-left: 110px;
 
     font-family: "Satosh", sans-serif;
     font-weight: 900;
@@ -254,7 +256,7 @@ nav a{
 
 .texto-sobre{
     font-size: 20px;
-    margin-left: 100px;
+    margin-left: 60px;
 
     font-family: "Satosh", sans-serif;
     font-weight: 300;
@@ -262,6 +264,8 @@ nav a{
 
 .carrossel{
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 200px;
 }
 
@@ -269,11 +273,8 @@ nav a{
     position: relative;
     overflow: hidden;
 
-    width: 100%;
     max-width: 1762.5px;
-
-    margin-left: auto;
-    margin-right: auto;
+    flex-shrink: 0;
 }
 
 .imagens-carrossel::before,
@@ -316,7 +317,9 @@ nav a{
 }
 
 .seta-esquerda{
-    transform: translatex(100px);
+    position: absolute;
+    left: 0;
+    margin-left: 80px ;
     z-index: 10;
 
     cursor: pointer;
@@ -325,7 +328,9 @@ nav a{
 }
 
 .seta-direita{
-    transform: translatex(-100px);
+    position: absolute;
+    right: 0;
+    margin-right: 80px;
     z-index: 10;
 
     cursor: pointer;
@@ -351,4 +356,16 @@ nav a{
 
     font-family: "Satosh", sans-serif;
     font-weight: 300;
+}
+
+@media (max-width: 1590px) {
+    .imagens-carrossel{
+        max-width: 1255px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .imagens-carrossel{
+        max-width: 746.5px;
+    }
 }
