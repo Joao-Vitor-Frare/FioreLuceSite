@@ -187,7 +187,7 @@ nav a{
 
 .banner{
     position: relative;
-    background-image: url(/media/Imagem-Banner.jpeg);
+    background-image: url(/media/foto-banner.jpg);
     background-size: cover;
     background-position: center;
     height: 650px;
@@ -368,4 +368,19 @@ nav a{
     .imagens-carrossel{
         max-width: 746.5px;
     }
+}
+
+.contato{
+    
+}
+
+.intagram{
+    height: 20px;
+}
+
+.whatsapp{
+    height: 20px;
+}
+.email{
+    height: 20px;
 }
