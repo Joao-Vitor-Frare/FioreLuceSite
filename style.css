@@ -162,7 +162,7 @@ nav a{
     .logo-menu-aberto{
         display: block;
         position: absolute;
-        top: 0;
+        top: 0; 
         left: 0;
         margin-top:3px ;
         margin-left: 40px;
@@ -263,6 +263,7 @@ nav a{
 }
 
 .carrossel{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -313,7 +314,7 @@ nav a{
 
 .trilha-carrossel img {
     width: 488px;
-    height: 650;
+    height: 650px;
 }
 
 .seta-esquerda{
@@ -370,17 +371,44 @@ nav a{
     }
 }
 
+#contato{
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contato h1{
+    font-size: 50px;
+}
+
+.lista-contatos{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 40px;
+
+}
+
 .contato{
-    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
 }
 
-.intagram{
-    height: 20px;
+.contato img{
+    width: 35px;
+    height: 35px;
+    object-fit: contain; 
 }
 
-.whatsapp{
-    height: 20px;
+.contato h3{
+    margin: 0;
+    font-size: 30px;
 }
-.email{
-    height: 20px;
-}
+
+.contato:nth-child(1) img{ transform: scale(1.6); }
+.contato:nth-child(2) img{ transform: scale(0.95); }
+.contato:nth-child(3) img{ transform: scale(1); }

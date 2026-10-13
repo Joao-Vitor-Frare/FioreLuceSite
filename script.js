@@ -52,7 +52,7 @@ window.addEventListener('scroll', function() {
     ultimaPosicao = posicaoAtual;
 });
 
-document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+document.querySelectorAll('nav a[href^="#"], .logo a[href^="#"]').forEach(link => {
     link.addEventListener('click', function (e) {
         e.preventDefault();
 
@@ -80,7 +80,7 @@ const janelaCarrossel = document.querySelector('.imagens-carrossel');
 const larguraImagem = 487.5;
 const gap = 20;
 const passo = larguraImagem + gap;
-const deslocamentoInicial = 150;
+const deslocamentoInicial = 130;
 const totalImagens = 6;
 
 let imagensVisiveis = 3;
