@@ -15,6 +15,8 @@
     font-weight: 900;
 }
 
+
+
 body{
     background-color: rgb(12, 12, 12);
     color: white;
@@ -356,7 +358,7 @@ nav a{
     margin-right: auto;
 
     font-family: "Satosh", sans-serif;
-    font-weight: 300;
+    font-weight: 900;
 }
 
 @media (max-width: 1590px) {
@@ -376,10 +378,12 @@ nav a{
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: "Satosh", sans-serif;
+    font-weight: 900;
 }
 
 #contato h1{
-    font-size: 50px;
+    font-size: 40px;
 }
 
 .lista-contatos{
@@ -406,9 +410,121 @@ nav a{
 
 .contato h3{
     margin: 0;
-    font-size: 30px;
+    font-size:25px;
 }
 
 .contato:nth-child(1) img{ transform: scale(1.6); }
 .contato:nth-child(2) img{ transform: scale(0.95); }
 .contato:nth-child(3) img{ transform: scale(1); }
+
+.risco-final{
+    border: 1px solid rgb(45, 45, 45);
+    margin-right: 3%;
+    margin-left: 3%;
+}
+
+@media (max-width: 700px) {
+
+    .banner{
+        height: 550px;
+        padding-top: 260px;
+        background-position: 55%;
+    }
+
+    .banner::before{
+        top: auto;
+        bottom: 0;
+        height: 120px;
+    }
+
+    .lista-trabalho-banner{
+        font-size: 20px;
+    }
+
+    .principal-banner{
+        font-size: clamp(60px, 22vw, 150px);
+    }
+    
+    .texto-banner{
+        margin-top: -30px;
+        font-size: 16px;
+        padding-right: 40px;
+    }
+s
+    .sobre{
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding-right: 40px;
+        text-align: center;
+    }
+
+    .foto-sobre{
+        width: 240px;
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .titulo-sobre,
+    .texto-sobre{
+        margin-left: 0;
+    }
+
+    .titulo-sobre{
+        font-size: 30px;
+    }
+
+    .texto-sobre{
+        font-size: 16px;
+    }
+
+    .carrossel{
+        margin-top: 100px;
+    }
+
+    .imagens-carrossel{
+        width: 100%;
+        max-width: 100%;
+        touch-action: pan-y;
+    }
+
+    .imagens-carrossel::before,
+    .imagens-carrossel::after{
+        width: 30px;
+    }
+
+    .trilha-carrossel{
+        height: auto;
+    }
+
+    .trilha-carrossel img{
+        width: 70vw;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+    }
+
+    .seta-esquerda,
+    .seta-direita{
+        display: none;
+    }
+
+    #contato{
+        margin-top: 100px;
+        padding: 0 20px;
+    }
+
+    #contato h1{
+        font-size: 36px;
+    }
+
+    .contato h3{
+        font-size: 18px;
+        overflow-wrap: anywhere;
+    }
+    
+    .contato img{
+        width: 28px;
+        height: 28px;
+    }
+}

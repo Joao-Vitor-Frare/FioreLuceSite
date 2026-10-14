@@ -1,3 +1,4 @@
+// ===== MENU =====
 const botaoMenu = document.querySelector('.botao-menu');
 const nav = document.querySelector('nav');
 
@@ -17,21 +18,7 @@ linksMenu.forEach(function(link) {
     });
 });
 
-window.addEventListener('load', function() {
-    document.body.classList.add('pronto');
-});
-
-let timeoutRedimensionar;
-
-window.addEventListener('resize', function() {
-    document.body.classList.add('redimensionando');
-
-    clearTimeout(timeoutRedimensionar);
-    timeoutRedimensionar = setTimeout(function() {
-        document.body.classList.remove('redimensionando');
-    }, 300);
-});
-
+// ===== SCROLL =====
 let ultimaPosicao = 0;
 
 window.addEventListener('scroll', function() {
@@ -72,34 +59,37 @@ document.querySelectorAll('nav a[href^="#"], .logo a[href^="#"]').forEach(link =
     });
 });
 
+// ===== CARROSSEL =====
 const trilha = document.querySelector('.trilha-carrossel');
 const setaEsquerda = document.querySelector('.seta-esquerda');
 const setaDireita = document.querySelector('.seta-direita');
 const janelaCarrossel = document.querySelector('.imagens-carrossel');
 
-const larguraImagem = 487.5;
-const gap = 20;
-const passo = larguraImagem + gap;
-const deslocamentoInicial = 130;
 const totalImagens = 6;
 
-let imagensVisiveis = 3;
-let maxPosicao = totalImagens - imagensVisiveis;
 let posicaoAtual = 0;
-
-function calcularImagensVisiveis() {
-    const larguraJanela = janelaCarrossel.offsetWidth;
-    return Math.floor(larguraJanela / passo);
-}
+let passo = 0;
+let deslocamentoInicial = 0;
+let maxPosicao = 0;
 
 function atualizarCarrossel() {
     const deslocamento = deslocamentoInicial - (posicaoAtual * passo);
     trilha.style.transform = `translateX(${deslocamento}px)`;
 }
 
-function recalcularLimites() {
-    imagensVisiveis = calcularImagensVisiveis();
-    maxPosicao = totalImagens - imagensVisiveis;
+function medirCarrossel() {
+    const larguraImagem = trilha.querySelector('img').getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(trilha).columnGap) || 0;
+    const larguraJanela = janelaCarrossel.clientWidth;
+
+    passo = larguraImagem + gap;
+
+    const visiveis = Math.max(1, Math.floor(larguraJanela / passo));
+    maxPosicao = totalImagens - visiveis;
+
+    // centraliza o grupo de fotos visíveis dentro da janela
+    const larguraGrupo = visiveis * larguraImagem + (visiveis - 1) * gap;
+    deslocamentoInicial = (larguraJanela - larguraGrupo) / 2;
 
     if (posicaoAtual > maxPosicao) {
         posicaoAtual = maxPosicao;
@@ -122,9 +112,28 @@ setaEsquerda.addEventListener('click', function() {
     }
 });
 
+// arrastar com o dedo (celular)
+let inicioToque = 0;
+
+janelaCarrossel.addEventListener('touchstart', function(e) {
+    inicioToque = e.touches[0].clientX;
+}, { passive: true });
+
+janelaCarrossel.addEventListener('touchend', function(e) {
+    const diferenca = inicioToque - e.changedTouches[0].clientX;
+    if (Math.abs(diferenca) < 50) return;   // ignora toques curtos
+
+    if (diferenca > 0 && posicaoAtual < maxPosicao) posicaoAtual++;
+    if (diferenca < 0 && posicaoAtual > 0) posicaoAtual--;
+    atualizarCarrossel();
+});
+
+// ===== LOAD E RESIZE (um só de cada) =====
+let timeoutRedimensionar;
+
 window.addEventListener('load', function() {
     document.body.classList.add('pronto');
-    recalcularLimites();
+    medirCarrossel();
 });
 
 window.addEventListener('resize', function() {
@@ -133,6 +142,6 @@ window.addEventListener('resize', function() {
     clearTimeout(timeoutRedimensionar);
     timeoutRedimensionar = setTimeout(function() {
         document.body.classList.remove('redimensionando');
-        recalcularLimites();
+        medirCarrossel();
     }, 300);
 });
